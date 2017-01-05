@@ -1,0 +1,154 @@
+html {
+  font-size: 15px;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.o-msg {
+  width: 100%;
+  position: relative;
+  z-index: 10;
+}
+.o-msg:after {
+  content: ''; clear: both; display: table;
+}
+  .o-msg__content {
+    padding: 0.5rem;
+    max-width: 70%;
+    border-radius: 8px;
+    margin: 0 1.25rem 0.75rem;
+    background-color: #FFFFFF;
+    float: left;
+    position: relative;
+  }
+  .o-msg__content--right { background-color: #DCF8C6; float: right; }
+
+  .o-msg__name {
+    font-size: 0.9rem;
+    color: blue;
+    margin-bottom: 0.25rem;
+  }
+  .o-msg__timestamp {
+    font-size: 0.75rem;
+    color: #aaa;
+    float: right;
+    line-height: 1.5rem;
+    height: 1.15rem;
+  }
+
+
+.c-page {
+  overflow: auto;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+.c-header {
+  height: 10%;
+  width: 100%;
+  background-color: #07594A;
+  position: absolute;
+  color: white;
+  display: table;
+}
+  .c-header__inner {
+    display: table-cell;
+    vertical-align: middle;
+  }
+  .c-header__photo {
+    width: 40px; height: 40px;
+    background: url('../img/photo.jpg') no-repeat;
+    background-size: cover;
+    border-radius: 50%;
+    margin-left: 1rem;
+  }
+  .c-header__name {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.1rem;
+  }
+  .c-header__typing {
+    display: block;
+    font-size: 0.8rem;
+  }
+  .c-header__contacts {
+    font-size: 1.5rem;
+    text-align: right;
+    padding-right: 1rem;
+  }
+  .c-header__contacts i { margin: 0 0.25rem; }
+
+.c-msg-container {
+  width: 100%; height: 80%;
+  top: 10%;
+  background: #E5DDD5;
+  position: absolute;
+  overflow: auto;
+}
+  .c-msg-container__table {
+    display: table;
+    position: relative;
+    width: 100%; height: 100%;
+  }
+  .c-msg-container__cell {
+    display: table-cell;
+    vertical-align: bottom;
+  }
+  .c-msg-container__bg {
+    content: '';
+    width: 100%; height: 100%;
+    position: absolute;
+    background: url('../img/linux-bg.png');
+    background-size: 10%;
+    opacity: 0.05;
+    top: 0; left: 0;
+    z-index: 0;
+  }
+
+.c-reply {
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 100%; height: 10%;
+  background: #F5F1EE;
+}
+  .c-reply--table { display: table; }
+  .c-reply__cell { display: table-cell; vertical-align: middle; text-align: center; }
+
+  .c-reply__input {
+    width: 70%;
+    height: 2.5rem;
+    border: 0;
+    border-radius: 5px;
+    margin-right: 0.25rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    outline: none;
+  }
+  .c-reply__btn {
+    background-color: #07594A;
+    border-radius: 50%;
+    color: white;
+    width: 2.5rem; height: 2.5rem;
+    border: 0px;
+    outline: none;
+    transition: all 0.5s;
+  }
+    .c-reply__btn:hover { opacity: 0.9; }
+
+.u-clearfix{
+  content: ''; clear: both; display: table;
+}
+.u-hide {
+  display: none;
+}
+.u-invisible {
+  visibility: none;
+}
+
+
+@media (min-width: 768px) {
+
+}
