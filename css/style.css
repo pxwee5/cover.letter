@@ -34,12 +34,12 @@ body {
   }
   .o-msg__timestamp {
     font-size: 0.75rem;
+    margin-left: 0.5rem;
     color: #aaa;
     float: right;
     line-height: 1.5rem;
     height: 1.15rem;
   }
-
 
 .c-page {
   overflow: auto;
@@ -71,9 +71,12 @@ body {
     font-size: 1.1rem;
   }
   .c-header__typing {
-    display: block;
     font-size: 0.8rem;
+    display: none;
   }
+    .c-header__typing.active {
+      display: block;
+    }
   .c-header__contacts {
     font-size: 1.5rem;
     text-align: right;
@@ -127,6 +130,9 @@ body {
     padding-right: 1rem;
     outline: none;
   }
+  .c-reply__input:disabled {
+    opacity: 0;
+  }
   .c-reply__btn {
     background-color: #07594A;
     border-radius: 50%;
@@ -137,6 +143,7 @@ body {
     transition: all 0.5s;
   }
     .c-reply__btn:hover { opacity: 0.9; }
+    .c-reply__btn:disabled { opacity: 0.3; }
 
 .u-clearfix{
   content: ''; clear: both; display: table;
