@@ -21,10 +21,45 @@
         'Any vacancy for web developers in your company?'
       ]
     }, {
+      placeholder: 'Just type yes',
+      input: 'text',
+      messages: [
+        'Let me share a bit about myself ...',
+        '<strong>More than ten years informal ICT self-learning & three years as a professional programmer</strong><br />'+
+          'My ICT knowledge extends from the most basic: <br>from networking, technical support <br>to Photoshop/AI designs <br>to full stack web development, WebGL<br>and to Google SEO. I\'m also very open to <a href="http://dariusforoux.com/education/" target="_blank">continuous learning</a> and knowledge sharing, this allows me to become the "techical consultant" in the team in my previous company.',
+        '<strong>Entrepreneurship & Product Development Experience</strong><br />'+
+          'Developing "Pixors" and marketing it via social media helped me learnt a whole lot about internet marketing. The crowdfunding campaign on Indiegogo.com <a href="https://vulcanpost.com/361001/pixors-pixel-art-indiegogo/"  target="_blank">made the news</a>.',
+        '<strong>Learning and tinkering as long as I am alive</strong><br />'+
+          'I am always learning about the new technologies and Web Development. Currently learning about topics on using AI, Facebook <a href="http://graphql.org/" target="_blank">GraphQL</a> and Progressive Web Apps. Sometimes I would pick up new skills such as mobile app development just to learn about the underlying technology.',
+        '<strong>Solid leadership experience</strong><br />'+
+          'Managed a team of 10 people and reduced maintenance requests to less than 3 a day. I would consistently be in touch with everyone in the team to understand their challenges and strengths. Best coding practices are always the topic of conversation. Everyone\'s input is important to continuous improvement in the team.',
+        'Wow, that\'s a handful of stuff! I hope you are still following!'
+      ]
+    }, {
+      placeholder: 'Type yes please',
+      input: 'text',
+      messages: [
+        'I\'m glad to hear that you are interested!',
+        'As I was saying, I strive to make an impact to the industry and ${company}.',
+        '<strong>Long Term Development</strong><br />Ideally, I want ${company} to be the place where I fully contribute my vast knowledge in ICT for the years to come. It will be a platform for me to upgrade myself to a whole new level as well.',
+        'You can learn a lot about me via the resume attached in your email.',
+        'Give me a shot! :)'
+      ]
+    }, {
       placeholder: '',
       input: 'text',
       messages: [
-        'Let me tell you a bit about myself. '
+        'Great! You can get all my contacts from the icons above.',
+        'One last thing! (I swear they will be the last) Here are some stuffs that are keeping me busy',
+        '<strong>Progressive Web Apps (PWA)</strong><br />'+
+          'The web continues to catch up to mobile apps. PWA could be the tipping point to replacing native mobile apps - <a href="https://developers.google.com/web/progressive-web-apps/" target="_blank">Progressive Web Apps</a>',
+        '<strong>Hadoop Starter Kit</strong><br />'+
+          'Big Data is the next big thing. I am just starting to learn on this topic. Hopefully having the skill will take me somewhere. - <a href="https://www.udemy.com/hadoopstarterkit/" target="_blank">Hadoop Starter Kit</a>',
+        '<strong>360 Viewer For The Modern Web</strong><br />'+
+          'This is the goto library for 360 viewer for web and highly mobile responsive. Absolutely love this library. - <a href="http://www.marzipano.net/" target="_blank">Marzipano</a>',
+        '<strong>The Artificial Intelligence Revolution</strong><br />'+
+          'Bumped into this topic recently. Mixed feelings on this one, but highly insightful. - <a href="http://waitbutwhy.com/2015/01/artificial-intelligence-revolution-1.html" target="_blank">AI Revolution</a>',
+        'That\'s it! I hope you enjoyed this conversation! Get in touch!'
       ]
     }
   ];
@@ -46,7 +81,7 @@
       placeholder: '',
       input: 'text',
       messages: [
-        'Perfect! I knew there\'s a place for passionate developers!'
+        'Perfect! I knew there\'s always a place for passionate developers!'
       ]
     }
   ]
