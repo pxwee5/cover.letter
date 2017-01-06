@@ -6,6 +6,7 @@ html {
 body {
   padding: 0;
   margin: 0;
+  background-color: #F7F9FA;
 }
 
 .o-msg {
@@ -157,5 +158,23 @@ body {
 
 
 @media (min-width: 768px) {
+  .c-phone-bg {
+    position: absolute;
+    width: 45vh; height: 90vh;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    background: url('../img/iphone.png') no-repeat;
+    background-size: contain;
+  }
 
+  .c-page {
+    overflow: auto;
+    width: calc(421 / 500 * 45vh);
+    height: calc(748 / 1000 * 90vh);
+    top: calc(126 / 1000 * 90vh);
+    left: calc(40 / 500 * 45vh);
+    /*width: 421px; height: 748px;
+    top: 126px; left: 40px;*/
+    position: absolute;
+  }
 }
