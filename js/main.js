@@ -96,7 +96,7 @@
   }
   console.log(cookieData)
   var cpw = 7;
-  var wpm = 1000; // 200
+  var wpm = 2000; // 200
   var responseCounter = 0;
 
   // Elements
