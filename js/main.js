@@ -6,7 +6,7 @@
       type: 'text',
       messages: [
         'Hi! Like I was saying earlier, I\'m looking for opportunities in Web Development.',
-        'For the sake of this exercise, can you tell me your company name again?'
+        'For the sake of this conversation, can you tell me your company name?'
       ]
     }, {
       placeholder: 'There are a total of ... employees in our team.',
@@ -26,7 +26,7 @@
       messages: [
         'Let me share a bit about myself ...',
         '<strong>More than ten years informal ICT self-learning & three years as a professional programmer</strong><br />'+
-          'My ICT knowledge extends from the most basic: <br>from networking, technical support <br>to Photoshop/AI designs <br>to full stack web development, WebGL<br>and to Google SEO. I\'m also very open to <a href="http://dariusforoux.com/education/" target="_blank">continuous learning</a> and knowledge sharing, this allows me to become the "techical consultant" in the team in my previous company.',
+          'My ICT knowledge extends from the most basic: <br>to technical support, <br>to networking, <br>to Photoshop designs, <br>to web development,<br>and to Google Analytics/SEO.<br>I\'m also very open to <a href="http://dariusforoux.com/education/" target="_blank">continuous learning</a> and knowledge sharing, this allows me to become the "techical consultant" in the team in my previous company.',
         '<strong>Entrepreneurship & Product Development Experience</strong><br />'+
           'Developing "Pixors" and marketing it via social media helped me learnt a whole lot about internet marketing. The crowdfunding campaign on Indiegogo.com <a href="https://vulcanpost.com/361001/pixors-pixel-art-indiegogo/"  target="_blank">made the news</a>.',
         '<strong>Learning and tinkering as long as I am alive</strong><br />'+
@@ -44,7 +44,7 @@
         'As I was saying, I strive to make an impact to the industry and ${company}.',
         '<strong>Long Term Development</strong><br />Ideally, I want ${company} to be the place where I fully contribute my vast knowledge in ICT for the years to come. It will be a platform for me to upgrade myself to a whole new level as well.',
         'You can learn a lot about me via the resume attached in your email.',
-        'Give me a shot! :)'
+        'Give me a shot! :) <br>Type "yes" if you want to know more.'
       ]
     }, {
       placeholder: '',
@@ -61,7 +61,7 @@
         '<strong>The Artificial Intelligence Revolution</strong><br />'+
           'Bumped into this topic recently. Mixed feelings on this one, but highly insightful. <br/>- <a href="http://waitbutwhy.com/2015/01/artificial-intelligence-revolution-1.html" target="_blank">AI Revolution</a>',
         'That\'s it! I hope you enjoyed this conversation! Get in touch with me using the contact links above.',
-        'If you want to restart our conversation, please delete browser cookies :)'
+        'If you want to restart our conversation, just refresh the browser :)'
       ]
     }
   ];
@@ -90,16 +90,17 @@
   var recordedInfo = [];
 
   // Variables
-  var cookieData = Cookies.get('cv-data');
+  // var cookieData = Cookies.get('cv-data');
   var requestJSON = {
 
   }
-  console.log(cookieData)
+  // console.log(cookieData)
   var cpw = 7;
   var wpm = 2000; // 200
   var responseCounter = 0;
 
   // Elements
+  var scrollContainer = document.querySelector('.c-msg-container__scroll');
   var messageContainer = document.querySelector('.c-msg-container__cell');
   var messageTemplate = _.template(document.querySelector('.o-msg__template').innerHTML);
   var textInputEl = document.querySelector('.c-reply__input');
@@ -121,7 +122,11 @@
     }
     responseCounter += 1;
   });
-  console.log(form);
+
+  // document.addEventListener('scroll', function() {
+  //   console.log(messageContainer.scrollHeight);
+  // })
+
   form.addEventListener('submit', function(e) {
     e.preventDefault();
     btnSubmitHandler(textInputEl);
@@ -163,7 +168,8 @@
 
       setTimeout(function() {
         messageContainer.insertAdjacentHTML('beforeend', tmplCompiled);
-        document.querySelector('.c-msg-container').scrollTop = messageContainer.scrollHeight;
+        document.querySelector('.c-msg-container__scroll').scrollTop = messageContainer.scrollHeight;
+
         if (i === responses.messages.length - 1) {
           startTyping(false);
           disableInputs(false);
@@ -173,7 +179,7 @@
         }
       }, timer);
     });
-    console.log(responses.end);
+
     if (responses.end) {
       if (recordedInfo.length > 3) {
         handleXHR(recordedInfo);
@@ -208,7 +214,7 @@
       timestamp: tmplTimestamp
     });
     messageContainer.insertAdjacentHTML('beforeend', tmplCompiled);
-    document.querySelector('.c-msg-container').scrollTop = messageContainer.scrollHeight;
+    document.querySelector('.c-msg-container__scroll').scrollTop = messageContainer.scrollHeight;
     if (triggerFlag != false) {
       document.dispatchEvent(prepareResponseEvent);
     }
