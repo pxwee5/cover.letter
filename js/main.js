@@ -137,7 +137,15 @@
 
   textInputEl.addEventListener('keyup', inputKeyupHandler);
 
+  document.addEventListener('touchmove', touchmoveHandler, false);
+
   // Helper Functions
+
+  function touchmoveHandler(e) {
+    if (window.pageYOffset == 0) {
+      e.preventDefault();
+    }
+  }
   function prepareResponse(responses, callback) {
     var date = Date.now();
     var timer = 0;
