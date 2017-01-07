@@ -176,7 +176,9 @@
         if (i === responses.messages.length - 1) {
           startTyping(false);
           disableInputs(false);
-          textInputEl.focus();
+          console.log(window.matchMedia('(min-width: 768px)').matches);
+          if (window.matchMedia('(min-width: 768px)').matches) { textInputEl.focus(); }
+
           if (typeof callback === 'function') {
             callback();
           }
