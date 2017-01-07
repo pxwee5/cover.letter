@@ -144,8 +144,9 @@
   var preventPullToRefresh = false;
   var lastTouchY = 0;
   function touchstartHandler (e) {
+    console.log(e);
     lastTouchY = e.touches[0].clientY;
-    if (window.pageOffset == 0) { preventPullToRefresh = true };
+    if (window.pageYOffset == 0) { preventPullToRefresh = true };
   }
   function touchmoveHandler (e) {
     var touchY = e.touches[0].clientY;
@@ -154,7 +155,7 @@
     console.log(touchYDelta);
     if (preventPullToRefresh) {
       preventPullToRefresh = false;
-      if (touchDelta > 0) {
+      if (touchYDelta > 0) {
         e.preventDefault();
         return;
       }
