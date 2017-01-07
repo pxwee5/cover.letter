@@ -5,7 +5,7 @@
       placeholder: 'My name is ...',
       type: 'text',
       messages: [
-        'Hi! I\'m James! (well technically I am James\' not-very-clever chatbot) Nice to be able to chat with you. May I know who I am speaking to?',
+        'Hi! I\'m James! (well technically I am James\' not-very-clever chatbot) Nice to be able to chat with you.<br><br>(It is <strong>crucial not to refresh</strong> the page throughout this conversation)<br><br>May I know who I am speaking to?',
       ]
     }, {
       placeholder: 'The name of my company is ...',
@@ -39,7 +39,7 @@
           'I am always learning about the new technologies and Web Development. Currently learning about topics on using AI, Facebook <a href="http://graphql.org/" target="_blank">GraphQL</a> and Progressive Web Apps. Sometimes I would pick up new skills such as mobile app development just to learn about the underlying technology.',
         '<strong>Solid leadership experience</strong><br/><br/>'+
           'Managed a team of 10 people and reduced maintenance requests to less than 3 a day. I would consistently be in touch with everyone in the team to understand their challenges and strengths. Best coding practices are always the topic of our conversation. Everyone\'s input is important for continuous improvement in the team.',
-        'Wow, that\'s a mouthful! I hope I have sparked your interested. I have more to share. Can you please provide your email to continue?'
+        'Wow, that\'s a mouthful! I hope I have sparked your interested. I have more to share.<br><br>Can you please provide your email to continue?'
       ]
     }, {
       placeholder: 'Type yes to know more.',
@@ -73,7 +73,7 @@
       placeholder: 'Yes or No?',
       type: 'text',
       messages: [
-        'I think you\'re not following the question. Let me repeat again.<br><br>Are you still hiring web developers in your company?',
+        'I think you\'re not following the question, or my assistant is not clever enough lol. Here\'s the question again.<br><br>Are you hiring web developers in your company?',
       ]
     }, {
       placeholder: '',
@@ -93,11 +93,6 @@
   var recordedInfo = [];
 
   // Variables
-  // var cookieData = Cookies.get('cv-data');
-  var requestJSON = {
-
-  }
-  // console.log(cookieData)
   var cpw = 7;
   var wpm = 2000; // 200
   var responseCounter = 0;
@@ -126,10 +121,6 @@
     responseCounter += 1;
   });
 
-  // document.addEventListener('scroll', function() {
-  //   console.log(messageContainer.scrollHeight);
-  // })
-
   form.addEventListener('submit', function(e) {
     e.preventDefault();
     btnSubmitHandler(textInputEl);
@@ -141,38 +132,6 @@
   document.addEventListener('touchmove', touchmoveHandler, false);
 
   // Helper Functions
-  var preventPullToRefresh = false;
-  var lastTouchY = 0;
-
-  var touchstartHandler = function(e) {
-    console.log(e);
-    if (e.touches.length != 1) return;
-    lastTouchY = e.touches[0].clientY;
-    // Pull-to-refresh will only trigger if the scroll begins when the
-    // document's Y offset is zero.
-    maybePreventPullToRefresh = (window.pageYOffset == 0);
-    console.log(maybePreventPullToRefresh);
-  }
-
-  var touchmoveHandler = function(e) {
-    console.log(e);
-    var touchY = e.touches[0].clientY;
-    var touchYDelta = touchY - lastTouchY;
-    lastTouchY = touchY;
-
-    if (maybePreventPullToRefresh) {
-      // To suppress pull-to-refresh it is sufficient to preventDefault the
-      // first overscrolling touchmove.
-      console.log('prevented');
-      maybePreventPullToRefresh = false;
-      if (touchYDelta > 0) {
-        e.preventDefault();
-        return;
-      }
-    }
-  }
-  document.addEventListener('touchstart', touchstartHandler, false);
-  document.addEventListener('touchmove', touchmoveHandler, false);
 
   function prepareResponse(responses, callback) {
     var date = Date.now();
@@ -212,7 +171,6 @@
         if (i === responses.messages.length - 1) {
           startTyping(false);
           disableInputs(false);
-          console.log(window.matchMedia('(min-width: 768px)').matches);
           if (window.matchMedia('(min-width: 768px)').matches) { textInputEl.focus(); }
 
           if (typeof callback === 'function') {
@@ -288,7 +246,7 @@
       recordedInfo.push(value);
       prepareReply(reply);
     }
-    console.log(recordedInfo);
+    // console.log(recordedInfo);
   }
 
   function handleXHR(recordedArray) {
@@ -299,14 +257,13 @@
       "cv_vacancy": recordedArray[3],
       "cv_email": recordedArray[4],
     });
-    console.log(data);
 
     var xhr = new XMLHttpRequest();
     // xhr.withCredentials = true;
 
     xhr.addEventListener("readystatechange", function () {
       if (this.readyState === 4) {
-        console.log(this.responseText);
+        // console.log(this.responseText);
       }
     });
 
@@ -359,5 +316,35 @@
       }
     }, 500)
   }
+
+  //Disable Scroll to Refresh on mobile
+  var preventPullToRefresh = false;
+  var lastTouchY = 0;
+
+  var touchstartHandler = function(e) {
+    if (e.touches.length != 1) return;
+    lastTouchY = e.touches[0].clientY;
+    // Pull-to-refresh will only trigger if the scroll begins when the
+    // document's Y offset is zero.
+    maybePreventPullToRefresh = (window.pageYOffset == 0);
+  }
+
+  var touchmoveHandler = function(e) {
+    var touchY = e.touches[0].clientY;
+    var touchYDelta = touchY - lastTouchY;
+    lastTouchY = touchY;
+
+    if (maybePreventPullToRefresh) {
+      // To suppress pull-to-refresh it is sufficient to preventDefault the
+      // first overscrolling touchmove.
+      maybePreventPullToRefresh = false;
+      if (touchYDelta > 0) {
+        e.preventDefault();
+        return;
+      }
+    }
+  }
+  document.addEventListener('touchstart', touchstartHandler, false);
+  document.addEventListener('touchmove', touchmoveHandler, false);
 
 })()
