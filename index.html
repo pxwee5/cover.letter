@@ -14,51 +14,55 @@
   <div class="c-phone-bg">
 
 
-  <div class="c-page">
-    <div class="c-header">
-      <div class="c-header__inner"><div class="c-header__photo"></div></div>
-      <div class="c-header__inner c-header__name">
-        James (Peixi) Wee
-        <span class="c-header__typing">is typing ...</span>
-      </div>
-      <div class="c-header__inner c-header__contacts">
-        <i class="fa fa-phone" aria-hidden="true"></i>
-        <i class="fa fa-envelope-o" aria-hidden="true"></i>
-        <i class="fa fa-linkedin" aria-hidden="true"></i>
-      </div>
-    </div>
-
-    <div class="c-msg-container">
-      <div class="c-msg-container__table">
-        <div class="c-msg-container__cell">
-
-          <div class="o-msg__template u-hide">
-            <div class="o-msg">
-              <div class="o-msg__content ${className}">
-                <div class="o-msg__name">${name}</div>
-                <span>${message}</span>
-                <div class="o-msg__timestamp">${timestamp}</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="c-msg-container__bg"></div>
+    <div class="c-page">
+      <div class="c-header">
+        <div class="c-header__inner"><div class="c-header__photo"></div></div>
+        <div class="c-header__inner c-header__name">
+          James (Peixi) Wee
+          <span class="c-header__typing">is typing ...</span>
+        </div>
+        <div class="c-header__inner c-header__contacts">
+          <i class="fa fa-phone c-tooltip" aria-hidden="true"><div class="c-tooltip__text">+6016 553 8099</div></i>
+          <i class="fa fa-envelope-o c-tooltip" aria-hidden="true"><div class="c-tooltip__text">pxwee5@gmail.com</div></i>
+          <i class="fa fa-linkedin c-tooltip" aria-hidden="true"><div class="c-tooltip__text">https://www.linkedin.com/in/pxwee5</div></i>
         </div>
       </div>
-    </div>
 
-    <div class="c-reply c-reply--table">
-      <div class="c-reply__cell">
-        <input type="text" name="" value="" placeholder="The name of my company is ..." class="c-reply__input">
-        <button type="button" name="button" class="c-reply__btn">
-          <i class="fa fa-paper-plane" aria-hidden="true"></i>
-        </button>
+
+      <div class="c-msg-container">
+        <div class="c-msg-container__table">
+          <div class="c-msg-container__cell">
+
+            <div class="o-msg__template u-hide">
+              <div class="o-msg">
+                <div class="o-msg__content ${className}">
+                  <div class="o-msg__name">${name}</div>
+                  <span>${message}</span>
+                  <div class="o-msg__timestamp">${timestamp}</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="c-msg-container__bg"></div>
+          </div>
+        </div>
       </div>
-    </div>
 
+      <div class="c-reply c-reply--table">
+        <div class="c-reply__cell">
+          <form id="c-form">
+            <input type="text" name="" value="" placeholder="The name of my company is ..." class="c-reply__input">
+            <button type="submit" name="button" class="c-reply__btn">
+              <i class="fa fa-paper-plane" aria-hidden="true"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+
+    </div>
   </div>
-</div>
 
   <script type="text/javascript" src="js/main.js"></script>
+  <script type="text/javascript" src="js/cookie.js"></script>
 </body>
 </html>

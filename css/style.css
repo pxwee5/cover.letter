@@ -1,3 +1,12 @@
+/* Keyframes */
+@keyframes a-typing {
+  0%    { opacity: 1 }
+  40%   { opacity: 0 }
+  50%   { opacity: 1 }
+  100%  { opacity: 1 }
+}
+
+
 html {
   font-size: 15px;
   font-family: Helvetica, Arial, sans-serif;
@@ -43,7 +52,7 @@ body {
   }
 
 .c-page {
-  overflow: auto;
+  overflow: hidden;
   width: 100%;
   height: 100%;
   position: absolute;
@@ -77,13 +86,14 @@ body {
   }
     .c-header__typing.active {
       display: block;
+      animation: a-typing 2s step-end infinite;
     }
   .c-header__contacts {
     font-size: 1.5rem;
     text-align: right;
     padding-right: 1rem;
   }
-  .c-header__contacts i { margin: 0 0.25rem; }
+  .c-header__contacts i { margin: 0 0.25rem; cursor: pointer; }
 
 .c-msg-container {
   width: 100%; height: 80%;
@@ -156,23 +166,64 @@ body {
   visibility: none;
 }
 
+/* Tooltips */
+.c-tooltip {
+    position: relative;
+    display: inline-block;
+}
+  .c-tooltip:hover .c-tooltip__text {
+    visibility: visible;
+  }
+
+  .c-tooltip__text {
+    font-family: Helvetica, Arial, sans-serif;
+    visibility: hidden;
+    min-width: 100px;
+    width: auto;
+    background-color: black;
+    color: white;
+    white-space: nowrap;
+    padding: 0.5rem 1rem;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 1rem;
+    font-size: 0.85rem;
+
+    /* Position the tooltip */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-85%);
+    z-index: 1;
+    margin-top: 100%;
+  }
+  .c-tooltip__text:after {
+    content: '';
+    border-bottom: 7px solid black;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    position: absolute;
+    bottom: 100%; left: 85%;
+    transform: translateX(-50%);
+  }
+
+
 
 @media (min-width: 768px) {
   .c-phone-bg {
     position: absolute;
-    width: 45vh; height: 90vh;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
+    width: 47.5vh; height: 95vh;
+    top: 2%; left: 50%;
+    transform: translateX(-50%);
     background: url('../img/iphone.png') no-repeat;
     background-size: contain;
+    filter: drop-shadow(0 1rem 1rem rgba(0,0,0,1));
   }
 
   .c-page {
-    overflow: auto;
-    width: calc(421 / 500 * 45vh);
-    height: calc(748 / 1000 * 90vh);
-    top: calc(126 / 1000 * 90vh);
-    left: calc(40 / 500 * 45vh);
+    width: calc(421 / 500 * 47.5vh);
+    height: calc(748 / 1000 * 95vh);
+    top: calc(126 / 1000 * 95vh);
+    left: calc(40 / 500 * 47.5vh);
     /*width: 421px; height: 748px;
     top: 126px; left: 40px;*/
     position: absolute;

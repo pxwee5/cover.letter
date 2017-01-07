@@ -3,26 +3,26 @@
   var responses = [
     {
       placeholder: 'The name of my company is ...',
-      input: 'text',
+      type: 'text',
       messages: [
         'Hi! Like I was saying earlier, I\'m looking for opportunities in Web Development.',
         'For the sake of this exercise, can you tell me your company name again?'
       ]
     }, {
       placeholder: 'There are a total of ... employees in our team.',
-      input: 'number',
+      type: 'number',
       messages: [
         'How many employees are in your team so far?'
       ]
     }, {
       placeholder: 'Yes or No?',
-      input: 'text',
+      type: 'text',
       messages: [
         'Any vacancy for web developers in your company?'
       ]
     }, {
-      placeholder: 'Just type yes',
-      input: 'text',
+      placeholder: 'Enter your email.',
+      type: 'email',
       messages: [
         'Let me share a bit about myself ...',
         '<strong>More than ten years informal ICT self-learning & three years as a professional programmer</strong><br />'+
@@ -33,13 +33,13 @@
           'I am always learning about the new technologies and Web Development. Currently learning about topics on using AI, Facebook <a href="http://graphql.org/" target="_blank">GraphQL</a> and Progressive Web Apps. Sometimes I would pick up new skills such as mobile app development just to learn about the underlying technology.',
         '<strong>Solid leadership experience</strong><br />'+
           'Managed a team of 10 people and reduced maintenance requests to less than 3 a day. I would consistently be in touch with everyone in the team to understand their challenges and strengths. Best coding practices are always the topic of conversation. Everyone\'s input is important to continuous improvement in the team.',
-        'Wow, that\'s a handful of stuff! I hope you are still following!'
+        'Wow, that\'s a mouthful! I hope you\'re interested. Can you please input your email to continue?'
       ]
     }, {
-      placeholder: 'Type yes please',
-      input: 'text',
+      placeholder: 'Type yes to know more.',
+      type: 'text',
       messages: [
-        'I\'m glad to hear that you are interested!',
+        'Thank you for your email. I\'m glad to hear that you are interested!',
         'As I was saying, I strive to make an impact to the industry and ${company}.',
         '<strong>Long Term Development</strong><br />Ideally, I want ${company} to be the place where I fully contribute my vast knowledge in ICT for the years to come. It will be a platform for me to upgrade myself to a whole new level as well.',
         'You can learn a lot about me via the resume attached in your email.',
@@ -47,46 +47,46 @@
       ]
     }, {
       placeholder: '',
-      input: 'text',
+      type: 'text',
       messages: [
         'Great! You can get all my contacts from the icons above.',
         'One last thing! (I swear they will be the last) Here are some stuffs that are keeping me busy',
         '<strong>Progressive Web Apps (PWA)</strong><br />'+
-          'The web continues to catch up to mobile apps. PWA could be the tipping point to replacing native mobile apps - <a href="https://developers.google.com/web/progressive-web-apps/" target="_blank">Progressive Web Apps</a>',
+          'The web continues to catch up to mobile apps. PWA could be the tipping point to replacing native mobile apps <br/>- <a href="https://developers.google.com/web/progressive-web-apps/" target="_blank">Progressive Web Apps</a>',
         '<strong>Hadoop Starter Kit</strong><br />'+
-          'Big Data is the next big thing. I am just starting to learn on this topic. Hopefully having the skill will take me somewhere. - <a href="https://www.udemy.com/hadoopstarterkit/" target="_blank">Hadoop Starter Kit</a>',
+          'Big Data is the next big thing. I am just starting to learn on this topic. Hopefully having the skill will take me somewhere. <br/>- <a href="https://www.udemy.com/hadoopstarterkit/" target="_blank">Hadoop Starter Kit</a>',
         '<strong>360 Viewer For The Modern Web</strong><br />'+
-          'This is the goto library for 360 viewer for web and highly mobile responsive. Absolutely love this library. - <a href="http://www.marzipano.net/" target="_blank">Marzipano</a>',
+          'This is the goto library for 360 viewer for web and highly mobile responsive. Absolutely love this library. <br/>- <a href="http://www.marzipano.net/" target="_blank">Marzipano</a>',
         '<strong>The Artificial Intelligence Revolution</strong><br />'+
-          'Bumped into this topic recently. Mixed feelings on this one, but highly insightful. - <a href="http://waitbutwhy.com/2015/01/artificial-intelligence-revolution-1.html" target="_blank">AI Revolution</a>',
-        'That\'s it! I hope you enjoyed this conversation! Get in touch!'
+          'Bumped into this topic recently. Mixed feelings on this one, but highly insightful. <br/>- <a href="http://waitbutwhy.com/2015/01/artificial-intelligence-revolution-1.html" target="_blank">AI Revolution</a>',
+        'That\'s it! I hope you enjoyed this conversation! Get in touch with me using the contact links above.',
+        'If you want to restart our conversation, please delete browser cookies :)'
       ]
     }
   ];
   var feedback = [
     {
       placeholder: 'Yes or No?',
-      input: 'text',
+      type: 'text',
       messages: [
         'I think you\'re not following the question. Let me repeat again.<br><br>Are you still hiring web developers in your company?',
       ]
     }, {
       placeholder: '',
-      input: 'text',
+      type: 'text',
       messages: [
         'I believe there is always room for passionate and experienced developer.<br>Will you consider increasing your team to ... members?',
         'Either way, since you\'re here ..'
       ]
     }, {
       placeholder: '',
-      input: 'text',
+      type: 'text',
       messages: [
         'Perfect! I knew there\'s always a place for passionate developers!'
       ]
     }
   ]
   var recordedInfo = [];
-  console.log(responses);
 
   // Variables
   var cpw = 7;
@@ -98,6 +98,7 @@
   var messageTemplate = _.template(document.querySelector('.o-msg__template').innerHTML);
   var textInputEl = document.querySelector('.c-reply__input');
   var submitBtnEl = document.querySelector('.c-reply__btn');
+  var form = document.querySelector('#c-form');
 
   // Custom Events
   var prepareResponseEvent = document.createEvent('Event');
@@ -114,26 +115,30 @@
     }
     responseCounter += 1;
   });
-
-  submitBtnEl.addEventListener('click', btnSubmitHandler.bind(textInputEl));
+  console.log(form);
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    btnSubmitHandler(textInputEl);
+  });
 
   textInputEl.addEventListener('keyup', inputKeyupHandler);
 
   // Helper Functions
   function prepareResponse(responses, callback) {
-    console.log('played');
     var date = Date.now();
     var timer = 0;
 
     startTyping(true);
     disableInputs(true);
 
-    textInputEl.placeholder = responses.placeholder;
+    if (responses.placeholder) { textInputEl.setAttribute('placeholder', responses.placeholder) };
+    if (responses.type) { textInputEl.setAttribute('type', responses.type) };
+    
     responses.messages.forEach(function (response, i) {
       timer = timer + (response.length / cpw / wpm * 60 * 1000);
       var tmplClass = '';
       var tmplName = 'James (Peixi) Wee';
-      var tmplMessage = response;
+      var tmplMessage = templateHandler(response);
       var calcDate = date + timer;
 
       tmplTimestamp = new Date(calcDate).toLocaleTimeString([], {
@@ -190,17 +195,18 @@
     }
   }
 
-  function btnSubmitHandler() { // Bind to textInputEl
-    var value = this.value;
-    var placeholder = this.placeholder;
+  function btnSubmitHandler(inputEl) { // Bind to textInputEl
+    console.log('submitted');
+    var value = inputEl.value;
+    var placeholder = inputEl.placeholder;
     var reply = '';
 
     if (placeholder.indexOf('...') > 0) {
-      reply = this.placeholder.replace('...', value);
+      reply = inputEl.placeholder.replace('...', value);
     } else {
       reply = value;
     }
-    this.value = ''; // Reset input
+    inputEl.value = ''; // Reset input
 
     if (responseCounter === 3) {
       if (value.toLowerCase().indexOf('yes') < 0 && value.toLowerCase().indexOf('no')) {
@@ -227,6 +233,18 @@
       prepareReply(reply);
     }
     console.log(recordedInfo);
+  }
+
+  function templateHandler(text) {
+    if (text.indexOf('$') > 0) {
+      var compiled = _.template(text);
+      if (recordedInfo.length > 0) {
+        text = compiled({
+          company: recordedInfo[0]
+        });
+      }
+    }
+    return text;
   }
 
   function disableInputs(flag) {
