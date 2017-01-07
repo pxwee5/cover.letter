@@ -2,66 +2,69 @@
 
   var responses = [
     {
+      placeholder: 'My name is ...',
+      type: 'text',
+      messages: [
+        'Hi! I\'m James! (well technically I am James\' not-very-clever chatbot) Nice to be able to chat with you. May I know who I am speaking to?',
+      ]
+    }, {
       placeholder: 'The name of my company is ...',
       type: 'text',
       messages: [
-        'Hi! Like I was saying earlier, I\'m looking for opportunities in Web Development.',
-        'For the sake of this conversation, can you tell me your company name?'
+        'Hi ${name}, nice to meet you. If you have read my cover letter, you will know that I\'m looking for opportunities in Web Development.',
+        'May I know which company you\'re from?'
       ]
     }, {
       placeholder: 'There are a total of ... employees in our team.',
       type: 'number',
       messages: [
-        'How many employees are in your team so far?'
+        'How many team members are in your team?'
       ]
     }, {
       placeholder: 'Yes or No?',
       type: 'text',
       messages: [
-        'Any vacancy for web developers in your company?'
+        'Any vacancy for web developers in ${company}?'
       ]
     }, {
       placeholder: 'Enter your email.',
       type: 'email',
       messages: [
         'Let me share a bit about myself ...',
-        '<strong>More than ten years informal ICT self-learning & three years as a professional programmer</strong><br />'+
+        '<strong>More than ten years informal ICT self-learning & three years as a professional programmer</strong><br/><br/>'+
           'My ICT knowledge extends from the most basic: <br>to technical support, <br>to networking, <br>to Photoshop designs, <br>to web development,<br>and to Google Analytics/SEO.<br>I\'m also very open to <a href="http://dariusforoux.com/education/" target="_blank">continuous learning</a> and knowledge sharing, this allows me to become the "techical consultant" in the team in my previous company.',
-        '<strong>Entrepreneurship & Product Development Experience</strong><br />'+
-          'Developing "Pixors" and marketing it via social media helped me learnt a whole lot about internet marketing. The crowdfunding campaign on Indiegogo.com <a href="https://vulcanpost.com/361001/pixors-pixel-art-indiegogo/"  target="_blank">made the news</a>.',
-        '<strong>Learning and tinkering as long as I am alive</strong><br />'+
+        '<strong>Entrepreneurship & Product Development Experience</strong><br/><br/>'+
+          'Developing "Pixors" and marketing it via social media helped me learnt a whole lot about internet marketing and entrepreneurship. The crowdfunding campaign on Indiegogo.com <a href="https://vulcanpost.com/361001/pixors-pixel-art-indiegogo/"  target="_blank">made the news</a>.',
+        '<strong>Learning and tinkering as long as I am alive</strong><br/><br/>'+
           'I am always learning about the new technologies and Web Development. Currently learning about topics on using AI, Facebook <a href="http://graphql.org/" target="_blank">GraphQL</a> and Progressive Web Apps. Sometimes I would pick up new skills such as mobile app development just to learn about the underlying technology.',
-        '<strong>Solid leadership experience</strong><br />'+
-          'Managed a team of 10 people and reduced maintenance requests to less than 3 a day. I would consistently be in touch with everyone in the team to understand their challenges and strengths. Best coding practices are always the topic of conversation. Everyone\'s input is important to continuous improvement in the team.',
-        'Wow, that\'s a mouthful! I hope you\'re interested. Can you please input your email to continue?'
+        '<strong>Solid leadership experience</strong><br/><br/>'+
+          'Managed a team of 10 people and reduced maintenance requests to less than 3 a day. I would consistently be in touch with everyone in the team to understand their challenges and strengths. Best coding practices are always the topic of our conversation. Everyone\'s input is important for continuous improvement in the team.',
+        'Wow, that\'s a mouthful! I hope I have sparked your interested. I have more to share. Can you please provide your email to continue?'
       ]
     }, {
       placeholder: 'Type yes to know more.',
       type: 'text',
       end: true,
       messages: [
-        'Thank you for your email. I\'m glad to hear that you are interested!',
-        'As I was saying, I strive to make an impact to the industry and ${company}.',
-        '<strong>Long Term Development</strong><br />Ideally, I want ${company} to be the place where I fully contribute my vast knowledge in ICT for the years to come. It will be a platform for me to upgrade myself to a whole new level as well.',
-        'You can learn a lot about me via the resume attached in your email.',
-        'Give me a shot! :) <br>Type "yes" if you want to know more.'
+        'Thank you for your email. I\'m glad to hear that you are interested! As I was saying, I strive to make an impact to the industry and ${company}.',
+        '<strong>Long Term Employment</strong><br/><br/>Ideally, ${company} will be the place where I fully utilize my vast knowledge in ICT for many years to come. It will also be a platform for me to upgrade myself to a whole new level.',
+        'I hope you can give me a shot! You can learn a lot about me via the resume attached in your email. You can also get all my contacts from the icons above.',
+        'Type "yes" to learn more.'
       ]
     }, {
       placeholder: '',
       type: 'text',
       messages: [
-        'Great! You can get all my contacts from the icons above.',
-        'One last thing! (I swear they will be the last) Here are some stuffs that are keeping me busy',
-        '<strong>Progressive Web Apps (PWA)</strong><br />'+
-          'The web continues to catch up to mobile apps. PWA could be the tipping point to replacing native mobile apps <br/>- <a href="https://developers.google.com/web/progressive-web-apps/" target="_blank">Progressive Web Apps</a>',
-        '<strong>Hadoop Starter Kit</strong><br />'+
-          'Big Data is the next big thing. I am just starting to learn on this topic. Hopefully having the skill will take me somewhere. <br/>- <a href="https://www.udemy.com/hadoopstarterkit/" target="_blank">Hadoop Starter Kit</a>',
-        '<strong>360 Viewer For The Modern Web</strong><br />'+
-          'This is the goto library for 360 viewer for web and highly mobile responsive. Absolutely love this library. <br/>- <a href="http://www.marzipano.net/" target="_blank">Marzipano</a>',
-        '<strong>The Artificial Intelligence Revolution</strong><br />'+
+        'OK, one last sharing! (I swear they will be the last) Here are some stuffs that are keeping me busy.',
+        '<strong>Progressive Web Apps (PWA)</strong><br/><br/>'+
+          'The web continues to catch up to mobile apps. PWA could be the tipping point for the web to replace native mobile apps <br/>- <a href="https://developers.google.com/web/progressive-web-apps/" target="_blank">Progressive Web Apps</a>',
+        '<strong>Hadoop Starter Kit</strong><br/><br/>'+
+          'Big Data is the next big thing. I am just starting to learn on this topic. Hopefully having this new skill will be beneficial to ${company}. <br/>- <a href="https://www.udemy.com/hadoopstarterkit/" target="_blank">Hadoop Starter Kit</a>',
+        '<strong>360 Viewer For The Modern Web</strong><br/><br/>'+
+          'This is the go-to library for 360 viewer for web and highly mobile responsive. Absolutely love this library. <br/>- <a href="http://www.marzipano.net/" target="_blank">Marzipano</a>',
+        '<strong>The Artificial Intelligence Revolution</strong><br/><br/>'+
           'Bumped into this topic recently. Mixed feelings on this one, but highly insightful. <br/>- <a href="http://waitbutwhy.com/2015/01/artificial-intelligence-revolution-1.html" target="_blank">AI Revolution</a>',
-        'That\'s it! I hope you enjoyed this conversation! Get in touch with me using the contact links above.',
-        'If you want to restart our conversation, just refresh the browser :)'
+        'That\'s it ${name}! I hope you enjoyed this conversation! Please get in touch with me using the contact links above.<br><br>(If you want to restart our conversation, just refresh the browser)',
       ]
     }
   ];
@@ -76,8 +79,8 @@
       placeholder: '',
       type: 'text',
       messages: [
-        'I believe there is always room for passionate and experienced developer.<br>Will you consider increasing your team to ... members?',
-        'Either way, since you\'re here ..'
+        'Well, I believe there is always room for passionate and experienced developer.<br>You may want to increase your team to ${number} members',
+        'Either way, since you\'re here ...'
       ]
     }, {
       placeholder: '',
@@ -173,6 +176,7 @@
         if (i === responses.messages.length - 1) {
           startTyping(false);
           disableInputs(false);
+          textInputEl.focus();
           if (typeof callback === 'function') {
             callback();
           }
@@ -184,22 +188,13 @@
       if (recordedInfo.length > 3) {
         handleXHR(recordedInfo);
       }
-      // var recordObj = JSON.stringify({recordedInfo});
-      // console.log(recordObj);
-      //
-      // if (recordObj) {
-      //   xhttp.open()
-      // }
-      // var test = JSON.parse(recordObj);
     }
-
-
   }
 
   function prepareReply(reply, triggerFlag) {
     var tmplClass = 'o-msg__content--right';
     var tmplName = '';
-    var tmplMessage = reply;
+    var tmplMessage = templateHandler(reply);
     var tmplTimestamp = new Date().toLocaleTimeString([], {
       hour12: true,
       hour: 'numeric',
@@ -221,7 +216,6 @@
   }
 
   function btnSubmitHandler(inputEl) { // Bind to textInputEl
-    console.log('submitted');
     var value = inputEl.value;
     var placeholder = inputEl.placeholder;
     var reply = '';
@@ -233,12 +227,12 @@
     }
     inputEl.value = ''; // Reset input
 
-    if (responseCounter === 3) {
+    if (responseCounter === 4) {
       if (value.toLowerCase().indexOf('yes') < 0 && value.toLowerCase().indexOf('no')) {
         prepareReply(reply, false);
         setTimeout(function() {
             prepareResponse(feedback[0])
-        }, 500);
+        }, 250);
       } else if (value.toLowerCase().indexOf('yes') > -1) {
         recordedInfo.push(value);
         prepareReply(reply, false);
@@ -248,7 +242,6 @@
       } else if (value.toLowerCase().indexOf('no') > -1) {
         recordedInfo.push(value);
         prepareReply(reply, false);
-        feedback[1].messages[0] = feedback[1].messages[0].replace('...', parseInt(recordedInfo[1]) + 1);
         prepareResponse(feedback[1], function() {
           document.dispatchEvent(prepareResponseEvent);
         })
@@ -262,10 +255,11 @@
 
   function handleXHR(recordedArray) {
     var data = JSON.stringify({
-      "cv_company": recordedArray[0],
-      "cv_employees": recordedArray[1],
-      "cv_vacancy": recordedArray[2],
-      "cv_email": recordedArray[3],
+      "cv_name": recordedArray[0],
+      "cv_company": recordedArray[1],
+      "cv_employees": recordedArray[2],
+      "cv_vacancy": recordedArray[3],
+      "cv_email": recordedArray[4],
     });
     console.log(data);
 
@@ -291,7 +285,9 @@
       var compiled = _.template(text);
       if (recordedInfo.length > 0) {
         text = compiled({
-          company: recordedInfo[0]
+          name: (recordedInfo[0]) ? recordedInfo[0] : '',
+          company: (recordedInfo[1]) ? recordedInfo[1] : '',
+          number: (recordedInfo[2]) ? parseInt(recordedInfo[2]) + 1 : ''
         });
       }
     }
