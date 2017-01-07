@@ -5,7 +5,7 @@
       placeholder: 'My name is ...',
       type: 'text',
       messages: [
-        'Hi! I\'m James! (well technically I am James\' not-very-clever chatbot) Nice to be able to chat with you.<br><br>(It is <strong>crucial not to refresh</strong> the page throughout this conversation)<br><br>May I know who I am speaking to?',
+        'Hi! I\'m James! (well technically I am James\' not-very-clever chatbot) Nice to be able to chat with you.<br><br>(It is <strong>Try not to refresh</strong> the page half way through this conversation)<br><br>May I know who I am speaking to?',
       ]
     }, {
       placeholder: 'The name of my company is ...',
@@ -94,7 +94,7 @@
 
   // Variables
   var cpw = 7;
-  var wpm = 2000; // 200
+  var wpm = 1500; // 200
   var responseCounter = 0;
 
   // Elements

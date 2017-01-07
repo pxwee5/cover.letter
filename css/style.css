@@ -191,6 +191,8 @@ body {
 }
   .c-tooltip:hover .c-tooltip__text {
     visibility: visible;
+    opacity: 1;
+    transform: translateX(-85%) scale(1);
   }
 
   .c-tooltip__text {
@@ -206,13 +208,15 @@ body {
     border-radius: 6px;
     padding: 5px 1rem;
     font-size: 0.85rem;
+    transition: all 0.25s;
+    opacity: 0; transform: translateX(-85%) scale(0);
+    transform-origin: top right;
 
     /* Position the tooltip */
     position: absolute;
     left: 50%;
-    transform: translateX(-85%);
     z-index: 1;
-    margin-top: 100%;
+    margin-top: 10px;
   }
   .c-tooltip__text:after {
     content: '';
