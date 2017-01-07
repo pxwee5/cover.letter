@@ -143,24 +143,36 @@
   // Helper Functions
   var preventPullToRefresh = false;
   var lastTouchY = 0;
-  function touchstartHandler (e) {
+
+  var touchstartHandler = function(e) {
     console.log(e);
+    if (e.touches.length != 1) return;
     lastTouchY = e.touches[0].clientY;
-    if (window.pageYOffset == 0) { preventPullToRefresh = true };
+    // Pull-to-refresh will only trigger if the scroll begins when the
+    // document's Y offset is zero.
+    maybePreventPullToRefresh = (window.pageYOffset == 0);
+    console.log(maybePreventPullToRefresh);
   }
-  function touchmoveHandler (e) {
+
+  var touchmoveHandler = function(e) {
+    console.log(e);
     var touchY = e.touches[0].clientY;
     var touchYDelta = touchY - lastTouchY;
-    console.log(preventPullToRefresh);
-    console.log(touchYDelta);
-    if (preventPullToRefresh) {
-      preventPullToRefresh = false;
+    lastTouchY = touchY;
+
+    if (maybePreventPullToRefresh) {
+      // To suppress pull-to-refresh it is sufficient to preventDefault the
+      // first overscrolling touchmove.
+      console.log('prevented');
+      maybePreventPullToRefresh = false;
       if (touchYDelta > 0) {
         e.preventDefault();
         return;
       }
     }
   }
+  document.addEventListener('touchstart', touchstartHandler, false);
+  document.addEventListener('touchmove', touchmoveHandler, false);
 
   function prepareResponse(responses, callback) {
     var date = Date.now();
