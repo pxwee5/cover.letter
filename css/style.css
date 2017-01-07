@@ -1,8 +1,8 @@
 /* Keyframes */
 @keyframes a-typing {
   0%    { opacity: 1 }
-  40%   { opacity: 0 }
-  50%   { opacity: 1 }
+  35%   { opacity: 0 }
+  55%   { opacity: 1 }
   100%  { opacity: 1 }
 }
 

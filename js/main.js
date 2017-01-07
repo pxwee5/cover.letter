@@ -38,6 +38,7 @@
     }, {
       placeholder: 'Type yes to know more.',
       type: 'text',
+      end: true,
       messages: [
         'Thank you for your email. I\'m glad to hear that you are interested!',
         'As I was saying, I strive to make an impact to the industry and ${company}.',
@@ -89,6 +90,11 @@
   var recordedInfo = [];
 
   // Variables
+  var cookieData = Cookies.get('cv-data');
+  var requestJSON = {
+
+  }
+  console.log(cookieData)
   var cpw = 7;
   var wpm = 1000; // 200
   var responseCounter = 0;
@@ -133,7 +139,7 @@
 
     if (responses.placeholder) { textInputEl.setAttribute('placeholder', responses.placeholder) };
     if (responses.type) { textInputEl.setAttribute('type', responses.type) };
-    
+
     responses.messages.forEach(function (response, i) {
       timer = timer + (response.length / cpw / wpm * 60 * 1000);
       var tmplClass = '';
@@ -167,6 +173,19 @@
         }
       }, timer);
     });
+    console.log(responses.end);
+    if (responses.end) {
+      if (recordedInfo.length > 3) {
+        handleXHR(recordedInfo);
+      }
+      // var recordObj = JSON.stringify({recordedInfo});
+      // console.log(recordObj);
+      //
+      // if (recordObj) {
+      //   xhttp.open()
+      // }
+      // var test = JSON.parse(recordObj);
+    }
 
 
   }
@@ -233,6 +252,32 @@
       prepareReply(reply);
     }
     console.log(recordedInfo);
+  }
+
+  function handleXHR(recordedArray) {
+    var data = JSON.stringify({
+      "cv_company": recordedArray[0],
+      "cv_employees": recordedArray[1],
+      "cv_vacancy": recordedArray[2],
+      "cv_email": recordedArray[3],
+    });
+    console.log(data);
+
+    var xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+
+    xhr.addEventListener("readystatechange", function () {
+      if (this.readyState === 4) {
+        console.log(this.responseText);
+      }
+    });
+
+    xhr.open("POST", "https://api.backendless.com/v1/data/info");
+    xhr.setRequestHeader("application-id", "D1C97B21-A8C9-8C71-FFB4-F84115BA6800");
+    xhr.setRequestHeader("secret-key", "5E77DD15-63EF-E97A-FF47-06DB0F75AD00");
+    xhr.setRequestHeader("content-type", "application/json");
+    xhr.setRequestHeader("application-type", "REST");
+    xhr.send(data);
   }
 
   function templateHandler(text) {
