@@ -137,15 +137,30 @@
 
   textInputEl.addEventListener('keyup', inputKeyupHandler);
 
+  document.addEventListener('touchstart', touchstartHandler, false);
   document.addEventListener('touchmove', touchmoveHandler, false);
 
   // Helper Functions
-
-  function touchmoveHandler(e) {
-    if (window.pageYOffset == 0) {
-      e.preventDefault();
+  var preventPullToRefresh = false;
+  var lastTouchY = 0;
+  function touchstartHandler (e) {
+    lastTouchY = e.touches[0].clientY;
+    if (window.pageOffset == 0) { preventPullToRefresh = true };
+  }
+  function touchmoveHandler (e) {
+    var touchY = e.touches[0].clientY;
+    var touchYDelta = touchY - lastTouchY;
+    console.log(preventPullToRefresh);
+    console.log(touchYDelta);
+    if (preventPullToRefresh) {
+      preventPullToRefresh = false;
+      if (touchDelta > 0) {
+        e.preventDefault();
+        return;
+      }
     }
   }
+
   function prepareResponse(responses, callback) {
     var date = Date.now();
     var timer = 0;
