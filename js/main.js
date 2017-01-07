@@ -5,7 +5,7 @@
       placeholder: 'My name is ...',
       type: 'text',
       messages: [
-        'Hi! I\'m James! (well technically I am James\' not-very-clever chatbot) Nice to be able to chat with you.<br><br>(It is <strong>Try not to refresh</strong> the page half way through this conversation)<br><br>May I know who I am speaking to?',
+        'Hi! I\'m James!<br><br>Nice to be able to chat with you :)<br><br>(<strong>Try not to refresh</strong> this page half way through this conversation)<br><br>May I know who I am chatting with?',
       ]
     }, {
       placeholder: 'The name of my company is ...',
