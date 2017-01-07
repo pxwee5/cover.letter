@@ -11,7 +11,7 @@
       placeholder: 'The name of my company is ...',
       type: 'text',
       messages: [
-        'Hi ${name}, nice to meet you. If you have read my cover letter, you will know that I\'m looking for opportunities in Web Development.',
+        'Hi ${name}, nice to meet you. As you already know from reading my cover letter, I\'m looking for opportunities in Web Development in your company.',
         'May I know which company you\'re from?'
       ]
     }, {
